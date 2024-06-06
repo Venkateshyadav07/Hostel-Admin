@@ -1,0 +1,30 @@
+<!-- payment_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">Payment List</h1>
+    <ul class="list-group">
+      {% for payment in payments %}
+        <li class="list-group-item">
+          <strong>Student Name:</strong> {{ payment.student.name }}<br>
+          <strong>Amount:</strong> {{ payment.amount }}<br>
+          <strong>Date:</strong> {{ payment.payment_date }}
+        </li>
+      {% empty %}
+        <li class="list-group-item">No payments found.</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .container {
+      margin-top: 20px;
+    }
+  </style>
+{% endblock %}

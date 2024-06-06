@@ -1,0 +1,16 @@
+<!-- payment_history.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Payment History for {{ hostel.name }}</h1>
+  <ul>
+    {% for month, payments in payment_history.items %}
+      <li>{{ month }}</li>
+      <ul>
+        {% for payment in payments %}
+          <li>{{ payment.student.name }} ({{ payment.amount }}) - {{ payment.date.strftime('%d %B %Y') }}</li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
+  </ul>
+{% endblock %}

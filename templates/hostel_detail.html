@@ -1,0 +1,44 @@
+<!-- hostel_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h1 class="text-center mb-4">{{ hostel.name }} Details</h1>
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Hostel Information</h2>
+        <p><strong>Hostel Name:</strong> {{ hostel.name }}</p>
+        <p><strong>Capacity:</strong> {{ hostel.capacity }}</p>
+        <p><strong>Address:</strong> {{ hostel.address }}</p>
+        <p><strong>Type:</strong> {{ hostel.type }}</p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <h2 class="mb-3">Students in {{ hostel.name }}</h2>
+      <ul class="list-group">
+        {% for student in students %}
+          <li class="list-group-item">
+            <a href="{% url 'student_detail' student.id %}">{{ student.name }}</a>
+          </li>
+        {% empty %}
+          <li class="list-group-item">No students found.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+    .container {
+      margin-top: 20px;
+    }
+    .card {
+      margin-bottom: 20px;
+    }
+  </style>
+{% endblock %}

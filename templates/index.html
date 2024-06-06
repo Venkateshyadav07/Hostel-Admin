@@ -1,0 +1,177 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hostel Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-image: url('https://img.freepik.com/free-vector/student-bedroom-dormitory-with-bunk-bed-desk-chair_88138-1025.jpg?w=1380&t=st=1717613308~exp=1717613908~hmac=0da60ea32309964931d143c4ea79fe46f96c34773477b1bfe5a4e7a0bd9034bd');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+    .navbar {
+      background-color: #403434; /* dark gray */
+    }
+    .navbar-brand {
+      color: #fff; /* white */
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .navbar-nav .nav-item {
+      margin-right: 10px;
+    }
+    .navbar-nav .nav-link {
+      color: #fff !important; /* white */
+      font-weight: bold;
+    }
+    .container-main {
+      margin-top: 20px;
+      background-color: #f8f9fa; /* light gray */
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .container-header {
+      background-color: #6c757d; /* gray */
+      color: #fff; /* white */
+      padding: 10px 20px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      margin-bottom: 20px;
+    }
+    .container-header h2, .container-header p {
+      text-align: center;
+    }
+    .btn-custom {
+      background-color: #6c757d; /* gray */
+      color: #fff; /* white */
+      border-color: #6c757d; /* gray */
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    .btn-custom:hover {
+      background-color: #5a6268; /* darker gray */
+      border-color: #5a6268; /* darker gray */
+    }
+    .card-custom {
+      border: 1px solid #e2e2e2;
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .card-custom-header {
+      background-color: #6bb12d; /* blue */
+      color: #fff; /* white */
+      padding: 12px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .card-custom-body {
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">Hostel Admin</a>
+    </nav>
+  </header>
+
+  <div class="container-main">
+    <div class="container-header">
+      <h2 class="text-center">Hostel Management System</h2>
+      <p class="text-center">Manage students, payments, hostels, and more.</p>
+    </div>
+    
+    {% block content %}
+    {% endblock %}
+  </div>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-custom-header bg-primary">
+            <h5 class="card-title text-center">Add Student</h5>
+          </div>
+          <div class="card-custom-body">
+            <p class="card-text text-center">Add a new student to the hostel.</p>
+            <a href="{% url 'add_student' %}" class="btn btn-block btn-custom bg-primary">Add Student</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-custom-header bg-success">
+            <h5 class="card-title text-center">Create Payment</h5>
+          </div>
+          <div class="card-custom-body">
+            <p class="card-text text-center">Create a new payment record.</p>
+            <a href="{% url 'payment_create' %}" class="btn btn-block btn-custom bg-success">Create Payment</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-custom-header bg-warning">
+            <h5 class="card-title text-center">View Hostels</h5>
+          </div>
+          <div class="card-custom-body">
+            <p class="card-text text-center">View and manage hostel details.</p>
+            <a href="{% url 'hostel_list' %}" class="btn btn-block btn-custom bg-warning">View Hostels</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-custom-header bg-info">
+            <h5 class="card-title text-center">View Students</h5>
+          </div>
+          <div class="card-custom-body">
+            <p class="card-text text-center">View and manage student details.</p>
+            <a href="{% url 'student_list' %}" class="btn btn-block btn-custom bg-info">View Students</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card card-custom">
+          <div class="card-custom-header bg-danger">
+            <h5 class="card-title text-center">View Payments</h5>
+          </div>
+          <div class="card-custom-body">
+            <p class="card-text text-center">View and manage payment records.</p>
+            <a href="{% url 'payment_list' %}" class="btn btn-block btn-custom bg-danger">View Payments</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <div class="container-header">
+      <h2 class="text-center">About</h2>
+    </div>
+    <div class="container-main">
+      <div class="card card-custom">
+        <div class="card-custom-body">
+            <p>This system is designed to manage hostel operations efficiently. It allows you to add new students, create payment records, view hostel details, manage student information, and keep track of payment records.</p>
+<p>Designed and Developed By</p>
+          <p>S. Venkatesh</p>
+          <p>Email: sunkannagarivenkateshyadav@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
